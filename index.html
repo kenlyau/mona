@@ -1,1 +1,22 @@
-hello mona
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mona & ken</title>
+</head>
+<body>
+   <div id="share"></div>
+   <script type="text/javascript" src="./nativeShare.js"></script>
+   <script type="text/javascript">
+       var config = {
+            url:'http://mona.kenlyau.com',
+            title:'mona & ken wedding',
+            desc:'mona and ken happing wedding',
+            img:'http://placeholder.it/200x500',
+            img_title:'monna-----',
+            from:'kenlyau.com'
+        };
+        var share_obj = new nativeShare('share',config);
+   </script>
+</body>
+</html>
