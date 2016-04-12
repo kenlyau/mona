@@ -55,7 +55,7 @@ var nativeShare = function (elementNode, config) {
                 ucweb.startRequest("shell.page_share", [title, desc, url, to_app, "", "", ""])
             } else {
                 if (typeof(ucbrowser) != "undefined") {
-                    ucbrowser.web_share(title, desc, url, to_app, "http://mona.kenlyau.com/statics/images/ad.jpg", "", '')
+                    ucbrowser.web_share(title, desc, url, to_app, "http://mona.kenlyau.com/statics/images/ad.jpg", "", 'http://mona.kenlyau.com/statics/images/ad.jpg')
                 } else {
                 }
             }
