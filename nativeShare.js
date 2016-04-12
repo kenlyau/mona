@@ -52,10 +52,10 @@ var nativeShare = function (elementNode, config) {
                 }, 5E3);
             }
             if (typeof(ucweb) != "undefined") {
-                ucweb.startRequest("shell.page_share", [title, desc, url, to_app, "http://mona.kenlyau.com/statics/images/ad.jpg", "", ""])
+                ucweb.startRequest("shell.page_share", [title, desc, url, to_app, "", "", ""])
             } else {
                 if (typeof(ucbrowser) != "undefined") {
-                    ucbrowser.web_share(title, desc, url, to_app, "", "@" + from, '')
+                    ucbrowser.web_share(title, desc, url, to_app, "http://mona.kenlyau.com/statics/images/ad.jpg", "", '')
                 } else {
                 }
             }
