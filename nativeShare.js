@@ -52,10 +52,10 @@ var nativeShare = function (elementNode, config) {
                 }, 5E3);
             }
             if (typeof(ucweb) != "undefined") {
-                ucweb.startRequest("shell.page_share", [title, title, url, to_app, "", "@" + from, ""])
+                ucweb.startRequest("shell.page_share", [title, desc, url, to_app, "", "@" + from, ""])
             } else {
                 if (typeof(ucbrowser) != "undefined") {
-                    ucbrowser.web_share(title, title, url, to_app, "", "@" + from, '')
+                    ucbrowser.web_share(title, desc, url, to_app, "", "@" + from, '')
                 } else {
                 }
             }
