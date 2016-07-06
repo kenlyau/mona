@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --hot --inline",
+    "dev": "webpack-dev-server --hot --inline --host 0.0.0.0",
     "build": "webpack --profile --progress --colors --display-error-details"
   },
   "repository": {
@@ -20,5 +20,8 @@
   "homepage": "https://github.com/kenlyau/mona",
   "devDependencies": {
     "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "zepto": "^1.0.1"
   }
 }

@@ -4,9 +4,46 @@
          <meta charset="utf-8" />
          <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
          <title>mona & ken</title>
+         <style>
+            html,body {
+                padding: 0;
+                margin: 0;
+            }
+            html, body, .page-wrap {
+                width: 100%;
+                height: 100%;
+            }
+            
+            .page {
+                width: 100%;
+                height: 100%;
+                -webkit-backface-visibility: hidden;
+            }
+         </style>
     </head>
     <body>
-        <h1></h1>
+        <div class="page-wrap">
+            <div class="page">
+                <div class="title">page one</div>
+                <div class="subtitle">page one subtitle</div>
+                <div class="arrow"></div>
+            </div>
+        
+            <div class="page">
+                <div class="title">page two</div>
+                <div class="subtitle">page two subtitle</div>
+                <div class="arrow"></div>
+            </div>
+            <div class="page">
+                <div class="title">page three</div>
+                <div class="subtitle">page three subtitle</div>
+                <div class="arrow"></div>
+            </div>
+            <div class="page">
+                <div class="title">page four</div>
+                <div class="subtitle">page four subtitle</div>
+            </div>
+        </div>
         <script src="./dist/bundle.js"></script>
     </body>
 </html>
