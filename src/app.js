@@ -1,147 +1,129 @@
 var Zepto = require("./lib/zepto");
 var PageSlider =  require("./lib/PageSlider");
 var anime = require("./lib/anime");
-
 var animeObj = {}, index;
 
-var fireworks = (function() {
+var setDashoffset = function(el) {
+    var l = el.getTotalLength();
+    el.setAttribute('stroke-dasharray', l);
+    return [l,0];
+  };
+[].slice.call(document.querySelectorAll("#s-name path")).forEach(function(item){
+    var l = item.getTotalLength();
+    item.setAttribute('stroke-dasharray', l);
+    item.setAttribute('stroke-dashoffset', l);
+    item.style.opacity = "1";
+  })  
 
-  var getFontSize = function() {
-    return parseFloat(getComputedStyle(document.documentElement).fontSize);
-  }
-
-  var canvas = document.querySelector('.fireworks');
-  var ctx = canvas.getContext('2d');
-  var numberOfParticules = 24;
-  var distance = 200;
-  var x = 0;
-  var y = 0;
-  var animations = [];
-
-  var setCanvasSize = function() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-
-
-  var updateCoords = function(e) {
-    x = e.clientX || e.touches[0].clientX;
-    y = e.clientY || e.touches[0].clientY;
-  }
-
-  var colors = ['#FF324A', '#31FFA6', '#206EFF', '#FFFF99'];
-
-  var createCircle = function(x,y) {
-    var p = {};
-    p.x = x;
-    p.y = y;
-    p.color = colors[anime.random(0, colors.length - 1)];
-    p.color = '#FFF';
-    p.radius = 0;
-    p.alpha = 1;
-    p.lineWidth = 6;
-    p.draw = function() {
-      ctx.globalAlpha = p.alpha;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI, true);
-      ctx.lineWidth = p.lineWidth;
-      ctx.strokeStyle = p.color;
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-    }
-    return p;
-  }
-
-  var createParticule = function(x,y) {
-    var p = {};
-    p.x = x;
-    p.y = y;
-    p.color = colors[anime.random(0, colors.length - 1)];
-    p.radius = anime.random(getFontSize(), getFontSize() * 2);
-    p.draw = function() {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI, true);
-      ctx.fillStyle = p.color;
-      ctx.fill();
-    }
-    return p;
-  }
-
-  var createParticles = function(x,y) {
-    var particules = [];
-    for (var i = 0; i < numberOfParticules; i++) {
-      var p = createParticule(x, y);
-      particules.push(p);
-    }
-    return particules;
-  }
-
-  var removeAnimation = function(animation) {
-    var index = animations.indexOf(animation);
-    if (index > -1) animations.splice(index, 1);
-  }
-
-  var animateParticules = function(x, y) {
-
-    setCanvasSize();
-    var particules = createParticles(x, y);
-    var circle = createCircle(x, y);
-    var particulesAnimation = anime({
-      targets: particules,
-      x: function(p) { return p.x + anime.random(-distance, distance); },
-      y: function(p) { return p.y + anime.random(-distance, distance); },
-      radius: 0,
-      duration: function() { return anime.random(1200, 1800); },
-      easing: 'easeOutExpo',
-      complete: removeAnimation
-    });
-    var circleAnimation = anime({
-      targets: circle,
-      radius: function() { return anime.random(getFontSize() * 8.75, getFontSize() * 11.25); },
-      lineWidth: 0,
-      alpha: {
-        value: 0,
-        easing: 'linear',
-        duration: function() { return anime.random(400, 600); }
-      },
-      duration: function() { return anime.random(1200, 1800); },
-      easing: 'easeOutExpo',
-      complete: removeAnimation
-    });
-    animations.push(particulesAnimation);
-    animations.push(circleAnimation);
-  }
-
-  var mainLoop = anime({
-    duration: Infinity,
-    update: function() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      animations.forEach(function(anim) {
-        anim.animatables.forEach(function(animatable) {
-          animatable.target.draw();
+var c1 = anime({
+   targets: "#XMLID_5_",
+   rotate: 720,
+   duration: 3000,
+   begin: function(animation){
+         animation.animatables.forEach(function(item){
+            item.target.style.fill = "#13AE67"
+         })
+   },
+   complete: function(){
+        anime({
+            //枝
+            targets: "#XMLID_2_ .st0",
+            opacity: 1,
+            duration: 2000,
+            delay: function(el, index) {
+                el.style.fill = "#13AE67"
+                 return index * 120
+            }
         });
-      });
-    }
-  });
-
-
-  window.addEventListener('resize', setCanvasSize, false);
-
-  return {
-    boom: animateParticules
-  }
-
-})();
+        anime({
+            //叶
+            targets: "#XMLID_7_ .st0",
+            opacity: 1,
+            scale: [0.1,1],
+            duration: 2000,
+            delay: function(el, index) {
+                el.style.fill = "#13AE67";
+                return index * 30
+            },
+        });
+        anime({
+            //花
+            targets: "#s-flower path",
+            scale: [0.1,1],
+            rotate: function(){
+                return anime.random(0,45);
+            },
+            opacity: 1,
+            duration: 1000,
+            delay: function(el,index) {
+                switch (el.getAttribute("class")) {
+                    case "st2":
+                         el.style.fill = "#FCF4DD";
+                         break;
+                    case "st3":
+                         el.style.fill = "#FADBD4";
+                         break;
+                    case "st4":
+                         el.style.fill = "#C891A0"; 
+                         break;
+                    case "st4": 
+                         el.style.fill = "#BC7C8D";
+                         break;
+                    case "st5":
+                         el.style.fill = "#C891A0";
+                         break;
+                    case "st6":
+                         el.style.fill = "#747D7A";
+                         break;
+                    case "st7": 
+                         el.style.fill = "#FCE4E3";
+                         break;
+                    case "st8": 
+                         el.style.fill = "#595757";
+                         break;
+                    case "st9": 
+                         el.style.fill = "#727171";
+                         break;
+                    case "st10":
+                         el.style.fill = "#9BA19F";         
+                }
+                return index * 25
+            },
+            complete: function(){
+                anime({
+                    //name
+                    targets: ["#s-name path", "#s-line path", "#s-date path"],
+                    opacity: [0.9,1],
+                    fill: {
+                        value: "#727171"
+                    },
+                    strokeDashoffset: {
+                      value: setDashoffset,
+                      duration: 1000,
+                      easing: 'easeOutQuad'
+                    },
+                    delay: function(el, index){
+                        el.setAttribute("fill", "#727171");
+                        return index * 120
+                    }
+                })
+            }
+        })
+   }
+})
 
 function boomStart(animation){
-    var circleDom = $(".circle");
-    fireworks.boom(circleDom.offset().left, circleDom.offset().top);
+    
+
+}
+
+function removeLoading(){
     
 }
 
 
 //init slider
-new PageSlider({
+var pageSlider = new PageSlider({
     pages: $(".page-wrap .page"),
     dev:false,
     oninit: oninit,
@@ -149,17 +131,13 @@ new PageSlider({
     onchange: onchange
 });
 
+$("body").on("tap", ".back", function(){
+    pageSlider.prev();
+});
 
 //oninit callback
 function oninit(){
-    setTimeout(function(){
-        new anime({
-            targets: ".circle",
-            translateY: "100",
-            scale: 0.01,
-            complete: boomStart
-        })
-    },3000)
+   
     
 };
 
@@ -170,8 +148,9 @@ function onbeforechange(){
 
 //onchange callback
 function onchange(){
-
+ 
     index = $(".page").index(".current");
+    console.log(index);
     if (index==1){
         if (animeObj.one){
             animeObj.one.restart();
@@ -194,5 +173,7 @@ function onchange(){
             direction: "alternate",
             loop: true
         })
+    }else if(index==4){
+        $(".map")[0].src="http://j.map.baidu.com/1papC";
     }
 }
