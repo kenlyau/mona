@@ -21,5 +21,4 @@ module.exports = {
             { test: /\.css$/, loader: "style!css" }
         ]
     },
-    plugins: plugins
 }

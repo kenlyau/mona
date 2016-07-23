@@ -223,7 +223,14 @@
                         -webkit-transform: translate3d(0, 0, 0);
                     }
                 }
-                
+                @-webkit-keyframes dash {
+                    to {
+                        stroke-dashoffset: 0;
+                    }
+                }
+                #s-start {
+                    animation: dash 5s linear infinite;
+                }
          </style>
     </head>
     <body>
