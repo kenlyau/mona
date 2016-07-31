@@ -54,126 +54,7 @@
 	var Zepto = __webpack_require__(2);
 	var PageSlider =  __webpack_require__(3);
 	var anime = __webpack_require__(4);
-	var animeObj = {}, index;
-
-	var setDashoffset = function(el) {
-	    var l = el.getTotalLength();
-	    el.setAttribute('stroke-dasharray', l);
-	    return [l,0];
-	  };
-	[].slice.call(document.querySelectorAll("#s-name path")).forEach(function(item){
-	    var l = item.getTotalLength();
-	    item.setAttribute('stroke-dasharray', l);
-	    item.setAttribute('stroke-dashoffset', l);
-	    item.style.opacity = "1";
-	  })  
-
-	var c1 = anime({
-	   targets: "#XMLID_5_",
-	   rotate: 720,
-	   duration: 3000,
-	   begin: function(animation){
-	         animation.animatables.forEach(function(item){
-	            item.target.style.fill = "#13AE67"
-	         })
-	   },
-	   complete: function(){
-	        anime({
-	            //枝
-	            targets: "#XMLID_2_ .st0",
-	            opacity: 1,
-	            duration: 2000,
-	            delay: function(el, index) {
-	                el.style.fill = "#13AE67"
-	                 return index * 120
-	            }
-	        });
-	        anime({
-	            //叶
-	            targets: "#XMLID_7_ .st0",
-	            opacity: 1,
-	            scale: [0.1,1],
-	            duration: 2000,
-	            delay: function(el, index) {
-	                el.style.fill = "#13AE67";
-	                return index * 30
-	            },
-	        });
-	        anime({
-	            //花
-	            targets: "#s-flower path",
-	            scale: [0.1,1],
-	            rotate: function(){
-	                return anime.random(0,45);
-	            },
-	            opacity: 1,
-	            duration: 1000,
-	            delay: function(el,index) {
-	                switch (el.getAttribute("class")) {
-	                    case "st2":
-	                         el.style.fill = "#FCF4DD";
-	                         break;
-	                    case "st3":
-	                         el.style.fill = "#FADBD4";
-	                         break;
-	                    case "st4":
-	                         el.style.fill = "#C891A0"; 
-	                         break;
-	                    case "st4": 
-	                         el.style.fill = "#BC7C8D";
-	                         break;
-	                    case "st5":
-	                         el.style.fill = "#C891A0";
-	                         break;
-	                    case "st6":
-	                         el.style.fill = "#747D7A";
-	                         break;
-	                    case "st7": 
-	                         el.style.fill = "#FCE4E3";
-	                         break;
-	                    case "st8": 
-	                         el.style.fill = "#595757";
-	                         break;
-	                    case "st9": 
-	                         el.style.fill = "#727171";
-	                         break;
-	                    case "st10":
-	                         el.style.fill = "#9BA19F";         
-	                }
-	                return index * 25
-	            },
-	            complete: function(){
-	                anime({
-	                    //name
-	                    targets: ["#s-name path", "#s-line path", "#s-date path"],
-	                    opacity: [0.9,1],
-	                    fill: {
-	                        value: "#727171"
-	                    },
-	                    strokeDashoffset: {
-	                      value: setDashoffset,
-	                      duration: 1000,
-	                      easing: 'easeOutQuad'
-	                    },
-	                    delay: function(el, index){
-	                        el.setAttribute("fill", "#727171");
-	                        return index * 120
-	                    }
-	                })
-	            }
-	        })
-	   }
-	})
-
-	function boomStart(animation){
-	    
-
-	}
-
-	function removeLoading(){
-	    
-	}
-
+	var animeObj = window.animeObj =  {};
 
 	//init slider
 	var pageSlider = new PageSlider({
@@ -184,51 +65,151 @@
 	    onchange: onchange
 	});
 
-	$("body").on("tap", ".back", function(){
-	    pageSlider.prev();
-	});
 
 	//oninit callback
 	function oninit(){
-	   
+	    
+	    //remove loading
+	    setTimeout(function(){
+	        $(".loading").remove();
+	    }, 0);
+	    //bind index animation
+	    indexAnimation()
 	    
 	};
 
 	//onbeforechange callback
-	function onbeforechange(){
-
+	function onbeforechange(index){
+	    switch (index) {
+	        case 0:
+	            indexAnimation();
+	            break;
+	        case 1:
+	            suzhouAnimation();
+	            break;
+	        case 2:
+	            shanghaiAnimation();
+	            break;
+	        case 3:
+	            hongkongAnimation();
+	            break;
+	        case 4:
+	            klAnimation();                
+	    }
 	};
 
 	//onchange callback
-	function onchange(){
-	 
-	    index = $(".page").index(".current");
-	    console.log(index);
-	    if (index==1){
-	        if (animeObj.one){
-	            animeObj.one.restart();
-	            return;
-	        }
-	        animeObj.one = anime({
-	            targets: ".current .title",
-	            translateX: "13rem",
-	            rotate: {
-	                value: 80,
-	                duration: 1500,
-	                easing: "easeInOutQuad"
-	            },
-	            scale: {
-	                value: 2,
-	                delay: 150,
-	                duration: 850,
-	                easing: "easeInOutExpo"
-	            },
-	            direction: "alternate",
-	            loop: true
-	        })
-	    }else if(index==4){
-	        $(".map")[0].src="http://j.map.baidu.com/1papC";
+	function onchange(index){ 
+
+	};
+	function indexAnimation(){
+	    if (animeObj.indexWe || animeObj.indexCloud) {
+	        return;
 	    }
+	    animeObj.indexWe = anime({
+	        targets: [".page-index .we"],
+	        bottom: {
+	            value: 388,
+	            duration: 12000,
+	            delay: 120
+	        }
+	    });
+	    animeObj.indexCloud = anime({
+	        targets: [".page-index .cloud"],
+	        delay: function(el, index){
+	            return index*80
+	        },
+	        duration: 8000,
+	        loop: true,
+	        direction: 'alternate',
+	        translateX: "5rem"
+	    });
+	    animeObj.indexHeart = anime({
+	        targets: [".pop-heart span"],
+	        opacity: {
+	            value: [1,0],
+	            delay: function(el, index){
+	                return 80*index;
+	            },
+	            duration: 5000
+	        },
+	        scale: {
+	           value: [0.1,0.8],
+	           delay: function(el, index){
+	              return 80*index;
+	           },
+	           duration: 3000
+	        },
+	        marginTop: {
+	            value: function(){
+	                return anime.random(-100,-200)
+	            },
+	            delay: function(el, index){
+	                return 80*index;
+	            },
+	            duration: 3000
+	        },
+	        marginLeft: {
+	           value: function(){
+	                return anime.random(-20,20);
+	           },
+	           delay: function(el, index){
+	            return 80*index;
+	           },
+	           duration: 3000
+	        },
+	        loop: true
+	    })
+	};
+	function suzhouAnimation(){
+	    if (animeObj.suzhouWe){
+	        animeObj.suzhouWe.restart();
+	    }
+	    animeObj.suzhouWe = anime({
+	        targets:  ".page-suzhou .we",
+	        delay: 120,
+	        bottom: 388,
+	        duration: 12000   
+	    })
+	};
+	function shanghaiAnimation(){
+	    if (animeObj.shanghaiWe){
+	        animeObj.shanghaiWe.restart();
+	    }
+	    animeObj.shanghaiWe = anime({
+	        targets:  ".page-shanghai .we",
+	        delay: 120,
+	        bottom: 388,
+	        duration: 12000  
+	    })
+	};
+	function hongkongAnimation(){
+	    if (animeObj.hongkongWe){
+	        animeObj.hongkongWe.restart();
+	    }
+	    animeObj.hongkongWe = anime({
+	        targets:  ".page-hongkong .we",
+	        delay: 120,
+	        bottom: 388,
+	        duration: 12000  
+	    })
+	};
+	function klAnimation(){
+	    if (animeObj.klWe){
+	        animeObj.klWe.restart();
+	    }
+	    animeObj.klWe = anime({
+	        targets:  ".page-kl .we",
+	        delay: 120,
+	        bottom: 388,
+	        duration: 12000   
+	    })
+	};
+	function commentAnimation(){
+
+	};
+	function mapAnimation(){
+
 	}
 
 
@@ -708,7 +689,7 @@
 
 	            direct && this._removeTransition();
 
-	            this.onbeforechange.call(this);
+	            this.onbeforechange.call(this, index);
 
 	            if (this.direction === 'v') {
 	                distance = -index * 100 + '%';
@@ -725,7 +706,7 @@
 	                self._currentClass(index);
 	                self.prevIndex = self.index;
 	                self.index = index;
-	                self.onchange.call(self);
+	                self.onchange.call(self,index);
 
 	                direct && self._setTransition();
 
@@ -747,12 +728,21 @@
 
 	        prev: function () {
 	            this.moveTo(this.index - 1);
+	            this._animateStart(this.index, this.index - 1);
 	        },
 
 	        next: function () {
 	            this.moveTo(this.index + 1);
+	            this._animateStart(this.index, this.index + 1);
 	        },
 
+	        _animateStart: function(from, to){
+	            this.pages.eq(from).addClass("leave");
+	            this.pages.eq(to).addClass("enter");
+	        },
+	        _animateEnd: function(){
+	            this.pages.removeClass("leave").removeClass("enter");
+	        },
 	        _setTransition: function () {
 	            this.target.css('-webkit-transition', '-webkit-transform 0.5s ease');
 	        },
@@ -768,6 +758,7 @@
 	            if (index !== this.index && !this.animationPlayOnce) {
 	                this.pages.eq(this.index).removeClass(currentClass);
 	            }
+	            this._animateEnd();
 	        },
 
 	        _createDot: function () {

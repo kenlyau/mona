@@ -3,9 +3,9 @@ var path = require("path"),
     min = process.argv.indexOf("--min") !== -1,
     plugins = [];
 
-if (min) {
-    plugins.push(new webpack.optimize.UglifyJsPlugin());
-}
+//if (min) {
+//    plugins.push(new webpack.optimize.UglifyJsPlugin());
+//}
 
 module.exports = {
     entry: {
