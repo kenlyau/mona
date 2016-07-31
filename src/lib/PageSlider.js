@@ -296,7 +296,7 @@
 
             direct && this._removeTransition();
 
-            this.onbeforechange.call(this);
+            this.onbeforechange.call(this, index);
 
             if (this.direction === 'v') {
                 distance = -index * 100 + '%';
@@ -313,7 +313,7 @@
                 self._currentClass(index);
                 self.prevIndex = self.index;
                 self.index = index;
-                self.onchange.call(self);
+                self.onchange.call(self,index);
 
                 direct && self._setTransition();
 
@@ -335,12 +335,21 @@
 
         prev: function () {
             this.moveTo(this.index - 1);
+            this._animateStart(this.index, this.index - 1);
         },
 
         next: function () {
             this.moveTo(this.index + 1);
+            this._animateStart(this.index, this.index + 1);
         },
 
+        _animateStart: function(from, to){
+            this.pages.eq(from).addClass("leave");
+            this.pages.eq(to).addClass("enter");
+        },
+        _animateEnd: function(){
+            this.pages.removeClass("leave").removeClass("enter");
+        },
         _setTransition: function () {
             this.target.css('-webkit-transition', '-webkit-transform 0.5s ease');
         },
@@ -356,6 +365,7 @@
             if (index !== this.index && !this.animationPlayOnce) {
                 this.pages.eq(this.index).removeClass(currentClass);
             }
+            this._animateEnd();
         },
 
         _createDot: function () {
