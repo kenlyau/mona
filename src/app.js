@@ -6,7 +6,7 @@ var animeObj = window.animeObj =  {};
 //init slider
 var pageSlider = new PageSlider({
     pages: $(".page-wrap .page"),
-    dev:false,
+    dev: false,
     oninit: oninit,
     onbeforechange: onbeforechange,
     onchange: onchange

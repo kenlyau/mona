@@ -229,6 +229,28 @@ ul,li {
     left: 52px;
     top: 10px;
 }
+.wheel {
+    background-image: url(wheel-base.png);
+    -webkit-background-size: 216px 258px;
+    background-size: 216px 258px;
+    background-position: center 6px;
+    background-repeat: no-repeat;
+    height: 258px;
+    width: 227px;
+    position: absolute;
+    bottom: -36px;
+    right: -10px;
+    transform: scale(0.8) rotateY(-20deg);
+}
+.wheel-circle {
+    width: 227px;
+    background-image: url(wheel-circle.png);
+    -webkit-background-size: 227px 227px;
+    background-size: 227px 227px;
+    height: 227px;
+    width: 227px;
+    animation: rotate360 10s linear infinite;
+}
 /*index*/
 .page-index .guide {
     background-image: url(sprite.png);
