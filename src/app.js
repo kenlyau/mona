@@ -6,7 +6,7 @@ var animeObj = window.animeObj =  {};
 //init slider
 var pageSlider = new PageSlider({
     pages: $(".page-wrap .page"),
-    dev: false,
+    dev: 2,
     oninit: oninit,
     onbeforechange: onbeforechange,
     onchange: onchange
@@ -128,6 +128,30 @@ function shanghaiAnimation(){
         delay: 120,
         bottom: 388,
         duration: 12000  
+    });
+    animeObj.fire = anime({
+        targets: ".page-shanghai .fire",
+        opacity: {
+            delay: function(el, index){
+                return index * 100 + 1000;
+            },
+            value: [1,0],
+            duration: 1000,
+            easing: "easeInBounce"
+        },
+        translateX: {
+            value: function(){
+                return anime.random(10,50)
+            }
+        },
+        scale: {
+            delay: function(el, index){
+                return index * 100 + 1000;
+            },
+            value: [0,1],
+            duration: 2000
+        },
+        loop: 3
     })
 };
 function hongkongAnimation(){

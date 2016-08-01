@@ -133,6 +133,7 @@ ul,li {
     background-image: url(city.png);
     -webkit-background-size: 320px 500px;
     background-size: 320px 500px;
+    background-repeat: no-repeat;
     position: absolute;
     bottom: 0;
     opacity: 0.9;
@@ -249,7 +250,42 @@ ul,li {
     background-size: 227px 227px;
     height: 227px;
     width: 227px;
-    animation: rotate360 10s linear infinite;
+    animation: rotate360 30s linear infinite;
+}
+.fire {
+    background-image: url(sprite.png);
+    -webkit-background-size: 400px 500px;
+    background-size: 400px 500px;
+    opacity: 0;
+    position: absolute;
+}
+.fire-1 {
+    background-position:-120px  -180px;
+    left: 20px;
+    top: 20px;
+    height: 84px;
+    width: 92px;
+}
+.fire-2 {
+    background-position:-218px  -180px;
+    left: 190px;
+    top: 31px;
+    height: 84px;
+    width: 92px;
+}
+.fire-3 {
+    background-position:-124px -274px;
+    left: 180px;
+    top: 100px;
+    height: 60px;
+    width: 60px;
+}
+.fire-4 {
+    background-position: -190px -274px;
+    left: 240px;
+    top: 120px;
+    height: 60px;
+    width: 60px;
 }
 /*index*/
 .page-index .guide {
