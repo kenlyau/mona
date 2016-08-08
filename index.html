@@ -8,9 +8,6 @@
     </head>
     <body>
         <div class="loading">
-            <div class="logo">
-                <img src="./dist/static/logo.png">
-            </div>
             <div class="process">
                <div class="view">
                    <ul>
@@ -105,11 +102,60 @@
                 <div class="arrow"></div>
             </div>
             <div class="page page-comment">
+                <div class="rsvp">
+                    <form id="rsvp-form">
+                        <div class="form-box">
+                            <table>
+                                <tr>
+                                    <th>姓名：</th>
+                                    <td><input type="text" name="name"></td>
+                                </tr>
+                                <tr>
+                                    <th>手机：</th>
+                                    <td><input type="number" name="phone"></td>
+                                </tr>
+                                <tr>
+                                    <th>出席人数：</th>
+                                    <td><input type="number" name="number"></td>
+                                </tr>
+                                <tr>
+                                    <th>祝福语：</th>
+                                    <td><textarea name="comment"></textarea></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="btns">
+                           <button class="btn-default" id="rsvp-back">返回</button>
+                           <button class="btn-success" id="rsvp-send">送出祝福</button>
+                        </div>
+                    </form>
+                    
+                </div>
+                <div class="inner">
+                    <strong>我们要结婚啦！</strong>
+                    <p>诚挚的邀请您参加我们的婚礼，</p>
+                    <p>期待您带着祝福，<br>于2016年10月15日携眷出席。</p>
+                    <p></p>
+                    <button class="btn-success" id="rsvp-open">祝福，留言</button>
+                </div>
+                
                 <div class="arrow"></div>
             </div>
             <div class="page page-map">
-                <iframe class="map"></iframe>
-                <div class="back">返回</div>
+                <div class="map">
+                    <img src="./dist/static/map.png">
+                    <br>
+                    <br>
+                    <br>
+                    <a href="http://j.map.baidu.com/NpfgB"><button class="btn-success">详细地址</button></a>
+                </div>
+            </div>
+            <div class="page page-end">
+            <div class="tk">
+                <img src="./dist/static/logo.png">
+                <h2>THANK YOU</h2>
+            </div>
+                
             </div>
         </div>
         <script src="./dist/bundle.js"></script>

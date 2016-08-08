@@ -59,7 +59,7 @@
 	//init slider
 	var pageSlider = new PageSlider({
 	    pages: $(".page-wrap .page"),
-	    dev: 2,
+	    dev: 5,
 	    oninit: oninit,
 	    onbeforechange: onbeforechange,
 	    onchange: onchange
@@ -103,17 +103,17 @@
 
 	};
 	function indexAnimation(){
-	    if (animeObj.indexWe || animeObj.indexCloud) {
+	    if (animeObj.indexCloud) {
 	        return;
 	    }
-	    animeObj.indexWe = anime({
-	        targets: [".page-index .we"],
-	        bottom: {
-	            value: 388,
-	            duration: 12000,
-	            delay: 120
-	        }
-	    });
+	    // animeObj.indexWe = anime({
+	    //     targets: [".page-index .we"],
+	    //     bottom: {
+	    //         value: 388,
+	    //         duration: 12000,
+	    //         delay: 120
+	    //     }
+	    // });
 	    animeObj.indexCloud = anime({
 	        targets: [".page-index .cloud"],
 	        delay: function(el, index){
@@ -162,26 +162,26 @@
 	    })
 	};
 	function suzhouAnimation(){
-	    if (animeObj.suzhouWe){
-	        animeObj.suzhouWe.restart();
-	    }
-	    animeObj.suzhouWe = anime({
-	        targets:  ".page-suzhou .we",
-	        delay: 120,
-	        bottom: 388,
-	        duration: 12000   
-	    })
+	    // if (animeObj.suzhouWe){
+	    //     animeObj.suzhouWe.restart();
+	    // }
+	    // animeObj.suzhouWe = anime({
+	    //     targets:  ".page-suzhou .we",
+	    //     delay: 120,
+	    //     bottom: 388,
+	    //     duration: 12000   
+	    // })
 	};
 	function shanghaiAnimation(){
-	    if (animeObj.shanghaiWe){
-	        animeObj.shanghaiWe.restart();
-	    }
-	    animeObj.shanghaiWe = anime({
-	        targets:  ".page-shanghai .we",
-	        delay: 120,
-	        bottom: 388,
-	        duration: 12000  
-	    });
+	    // if (animeObj.shanghaiWe){
+	    //     animeObj.shanghaiWe.restart();
+	    // }
+	    // animeObj.shanghaiWe = anime({
+	    //     targets:  ".page-shanghai .we",
+	    //     delay: 120,
+	    //     bottom: 388,
+	    //     duration: 12000  
+	    // });
 	    animeObj.fire = anime({
 	        targets: ".page-shanghai .fire",
 	        opacity: {
@@ -208,33 +208,56 @@
 	    })
 	};
 	function hongkongAnimation(){
-	    if (animeObj.hongkongWe){
-	        animeObj.hongkongWe.restart();
-	    }
-	    animeObj.hongkongWe = anime({
-	        targets:  ".page-hongkong .we",
-	        delay: 120,
-	        bottom: 388,
-	        duration: 12000  
-	    })
+	    // if (animeObj.hongkongWe){
+	    //     animeObj.hongkongWe.restart();
+	    // }
+	    // animeObj.hongkongWe = anime({
+	    //     targets:  ".page-hongkong .we",
+	    //     delay: 120,
+	    //     bottom: 388,
+	    //     duration: 12000  
+	    // })
 	};
 	function klAnimation(){
-	    if (animeObj.klWe){
-	        animeObj.klWe.restart();
-	    }
-	    animeObj.klWe = anime({
-	        targets:  ".page-kl .we",
-	        delay: 120,
-	        bottom: 388,
-	        duration: 12000   
-	    })
+	    // if (animeObj.klWe){
+	    //     animeObj.klWe.restart();
+	    // }
+	    // animeObj.klWe = anime({
+	    //     targets:  ".page-kl .we",
+	    //     delay: 120,
+	    //     bottom: 388,
+	    //     duration: 12000   
+	    // })
 	};
 	function commentAnimation(){
 
 	};
 	function mapAnimation(){
 
-	}
+	};
+
+	//rsvp bind event
+	(function(){
+	    var backEle = $("#rsvp-back"),
+	        sendEle = $("#rsvp-send"),
+	        openEle = $("#rsvp-open"),
+	        commentEle = $(".page-comment");
+
+	    openEle.click(function(){
+	        commentEle.addClass("open")
+	    });
+	    backEle.click(function(e){
+	        commentEle.removeClass("open");
+	        e.preventDefault();
+	    })
+	    sendEle.click(function(e) {
+	        commentEle.removeClass("open");
+	        e.preventDefault();
+	        $.get("http://api.xiandusi.com/api/gusets/insert/" + $("#rsvp-form").serialize(), function(response){
+	            console.log(response);
+	        })
+	    })    
+	})()
 
 
 /***/ },
@@ -761,7 +784,9 @@
 	        },
 
 	        _animateStart: function(from, to){
-	            this.pages.eq(from).addClass("leave");
+	            if(from >0 && from < this.pages.length-1){
+	                this.pages.eq(from).addClass("leave");
+	            }
 	            this.pages.eq(to).addClass("enter");
 	        },
 	        _animateEnd: function(){

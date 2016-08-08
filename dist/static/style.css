@@ -89,6 +89,19 @@ html, body {
 ul,li {
     list-style: none;
 }
+button {
+    border: 0;
+    padding: 8px 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+}
+.btn-success {
+    background-color: #6ba578;
+}
+.btn-default {
+    background-color: #999898;
+}
 .page-wrap,.loading {
     width: 100%;
     height: 100%;
@@ -106,12 +119,13 @@ ul,li {
 }
 .loading .process {
    position: absolute;
-   bottom: 80px;
+   top: 50%;
    left: 50%;
    margin-left: -72px;
    overflow: hidden;
-    width: 0;
-    -webkit-animation: process 5s infinite ;
+   width: 0;
+   -webkit-animation: process 5s infinite;
+   animation: process 5s infinite;
 }
 .loading .process .view {
     display: inline-block;
@@ -193,6 +207,8 @@ ul,li {
     position: absolute;
     left: 10px;
     bottom: 1200px;
+    -webkit-transition: all 3s;
+    transition: all 3s;
 }
 .we .ori {
     position: relative;
@@ -230,6 +246,13 @@ ul,li {
     left: 52px;
     top: 10px;
 }
+.current .we{
+    bottom: 388px;
+}
+.leave .we {
+    bottom: 100px;
+}
+
 .wheel {
     background-image: url(wheel-base.png);
     -webkit-background-size: 216px 258px;
@@ -251,6 +274,7 @@ ul,li {
     height: 227px;
     width: 227px;
     animation: rotate360 30s linear infinite;
+    -webkit-animation: rotate360 40s linear infinite;
 }
 .fire {
     background-image: url(sprite.png);
@@ -332,8 +356,101 @@ ul,li {
     top: 25px;
 }
 
-
-
+.page-comment .inner {
+    width: 80%;
+    margin: 0 10%;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.6rem;
+    color: #fff;
+    position: absolute;
+    transform: translateY(50%);
+}
+.page-comment .inner strong {
+   font-size: 1.2rem;
+   font-weight: normal; 
+}
+.page-comment .inner button {
+    margin-top: 50px;
+}
+.page-map .map {
+    max-width: 360px;
+    text-align: center;
+    margin: 50px auto;
+}
+.page-map .map img {
+    width: 100%;
+}
+.page-end .tk{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -70px;
+    margin-top: -100px;
+    height: 200px;
+    width: 140px;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+}
+.page-end .tk img{
+    width: 100%;
+}
+.rsvp {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    left: -100%;
+    top: 0;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    background-color: #fff;
+}
+.rsvp .btns {
+    text-align: center;
+}
+.rsvp button {
+    margin: 0 10px;
+}
+.rsvp table {
+    width: 80%;
+    margin: 50px 10%;
+    font-size: 0.8rem;
+}
+.rsvp table td {
+    padding: 5px;
+}
+.rsvp table th {
+    width: 4rem;
+    text-align: right;
+}
+.rsvp input {
+    border: 1px solid #e9c5cd;
+    background-color: transparent;
+    border-radius: 6px;
+    box-shadow: none;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    width: 100%;
+    padding: 0 10px;
+    -webkit-appearance: none;
+}
+.rsvp textarea {
+    border: 1px solid #e9c5cd;
+    background-color: transparent;
+    border-radius: 6px;
+    box-shadow: none;
+    height: 4.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    width: 100%;
+    -webkit-appearance: none;
+}
+.open .rsvp {
+    left: 0;
+}
 .arrow{
     position: absolute;
     left: 50%;

@@ -344,7 +344,9 @@
         },
 
         _animateStart: function(from, to){
-            this.pages.eq(from).addClass("leave");
+            if(from >0 && from < this.pages.length-1){
+                this.pages.eq(from).addClass("leave");
+            }
             this.pages.eq(to).addClass("enter");
         },
         _animateEnd: function(){
