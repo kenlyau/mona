@@ -355,6 +355,74 @@ button {
     left: 212px;
     top: 25px;
 }
+.page-suzhou p {
+    position: absolute;
+    right: 10px;
+    text-align: right;
+    line-height: 2rem;
+    font-size: 1rem;
+    color: #fff;
+    top: 25%;
+    z-index: 1;
+}
+.page-shanghai p {
+    position: absolute;
+    right: 10px;
+    text-align: right;
+    line-height: 2rem;
+    font-size: 1rem;
+    color: #fff;
+    top: 25%;
+    z-index: 1;
+}
+.page-hongkong p {
+    position: absolute;
+    right: 10px;
+    text-align: right;
+    line-height: 2rem;
+    font-size: 1rem;
+    color: #fff;
+    top: 25%;
+    z-index: 1;
+}
+.page-kl .we-hand {
+    position: absolute;
+    background-image: url(sprite.png);
+    -webkit-background-size: 400px 500px;
+    background-size: 400px 500px;
+    background-repeat: no-repeat;
+    background-position: -12px -346px;
+    width: 80px;
+    height: 108px;
+    top: 50%;
+    margin-top: -54px;
+    left: -100px;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+}
+.page-kl .diamond {
+    position: absolute;
+    background-image: url(sprite.png);
+    -webkit-background-size: 400px 500px;
+    background-size: 400px 500px;
+    background-repeat: no-repeat;
+    background-position: -320px -180px;
+    width: 80px;
+    height: 92px;
+    top: 50%;
+    margin-top: -46px;
+    right: -100px;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+}
+.page-kl.current .we-hand {
+    left: 50%;
+}
+.page-kl.current .diamond {
+    right: 50%;
+    -webkit-transform: -webkit-scale(0.6);
+    transform: scale(0.6);
+}
 
 .page-comment .inner {
     width: 80%;
@@ -364,7 +432,8 @@ button {
     line-height: 1.6rem;
     color: #fff;
     position: absolute;
-    transform: translateY(50%);
+    -webkit-transform: translateY(30%);
+    transform: translateY(30%);
 }
 .page-comment .inner strong {
    font-size: 1.2rem;
@@ -373,13 +442,41 @@ button {
 .page-comment .inner button {
     margin-top: 50px;
 }
+.page-comment .avatar {
+    margin: 20px auto;
+    background-image: url(sprite.png);
+    -webkit-background-size: 400px 500px;
+    background-size: 400px 500px;
+    background-repeat: no-repeat;
+    background-position: -100px -346px;
+    width: 180px;
+    height: 105px;
+}
+.page-map.enter .map img {
+   -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0.9
+}
+.page-map.current .map img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1
+}
 .page-map .map {
     max-width: 360px;
     text-align: center;
     margin: 50px auto;
 }
+.page-map .map  p {
+    color: #888;
+}
 .page-map .map img {
     width: 100%;
+    -webkit-transform: scale(5);
+    transform: scale(5);
+    opacity: 0.1;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
 }
 .page-end .tk{
     position: absolute;
@@ -393,8 +490,23 @@ button {
     text-align: center;
     font-size: 1rem;
 }
+.page-end.enter .tk img {
+   -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0.5
+}
+.page-end.current .tk img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1
+}
 .page-end .tk img{
     width: 100%;
+    -webkit-transform: scale(5);
+    transform: scale(5);
+    opacity: 0.1;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
 }
 .rsvp {
     width: 100%;

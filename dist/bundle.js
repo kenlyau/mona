@@ -59,7 +59,7 @@
 	//init slider
 	var pageSlider = new PageSlider({
 	    pages: $(".page-wrap .page"),
-	    dev: 5,
+	    dev: 4,
 	    oninit: oninit,
 	    onbeforechange: onbeforechange,
 	    onchange: onchange
@@ -162,26 +162,10 @@
 	    })
 	};
 	function suzhouAnimation(){
-	    // if (animeObj.suzhouWe){
-	    //     animeObj.suzhouWe.restart();
-	    // }
-	    // animeObj.suzhouWe = anime({
-	    //     targets:  ".page-suzhou .we",
-	    //     delay: 120,
-	    //     bottom: 388,
-	    //     duration: 12000   
-	    // })
+	    
 	};
 	function shanghaiAnimation(){
-	    // if (animeObj.shanghaiWe){
-	    //     animeObj.shanghaiWe.restart();
-	    // }
-	    // animeObj.shanghaiWe = anime({
-	    //     targets:  ".page-shanghai .we",
-	    //     delay: 120,
-	    //     bottom: 388,
-	    //     duration: 12000  
-	    // });
+
 	    animeObj.fire = anime({
 	        targets: ".page-shanghai .fire",
 	        opacity: {
@@ -208,26 +192,12 @@
 	    })
 	};
 	function hongkongAnimation(){
-	    // if (animeObj.hongkongWe){
-	    //     animeObj.hongkongWe.restart();
-	    // }
-	    // animeObj.hongkongWe = anime({
-	    //     targets:  ".page-hongkong .we",
-	    //     delay: 120,
-	    //     bottom: 388,
-	    //     duration: 12000  
-	    // })
+	   
 	};
 	function klAnimation(){
-	    // if (animeObj.klWe){
-	    //     animeObj.klWe.restart();
-	    // }
-	    // animeObj.klWe = anime({
-	    //     targets:  ".page-kl .we",
-	    //     delay: 120,
-	    //     bottom: 388,
-	    //     duration: 12000   
-	    // })
+	    
+
+	  
 	};
 	function commentAnimation(){
 
@@ -236,27 +206,35 @@
 
 	};
 
-	//rsvp bind event
+	//bind event
 	(function(){
 	    var backEle = $("#rsvp-back"),
 	        sendEle = $("#rsvp-send"),
 	        openEle = $("#rsvp-open"),
 	        commentEle = $(".page-comment");
 
-	    openEle.click(function(){
+	    openEle.tap(function(){
 	        commentEle.addClass("open")
 	    });
-	    backEle.click(function(e){
+	    backEle.tap(function(e){
 	        commentEle.removeClass("open");
 	        e.preventDefault();
 	    })
 	    sendEle.click(function(e) {
-	        commentEle.removeClass("open");
+	        
 	        e.preventDefault();
-	        $.get("http://api.xiandusi.com/api/gusets/insert/" + $("#rsvp-form").serialize(), function(response){
-	            console.log(response);
+	        $.get("http://v2.xiandusi.com:3030/insert?" + $("#rsvp-form").serialize(), function(response){
+	            if(response.err){
+	                alert("噢噢，好像填的有点不对")
+	            }else{
+	                $("#rsvp-form")[0].reset();
+	                commentEle.removeClass("open");
+	                alert("祝福成功！")
+	            }
 	        })
-	    })    
+	    });
+
+	        
 	})()
 
 
