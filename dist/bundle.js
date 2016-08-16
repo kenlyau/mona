@@ -59,7 +59,7 @@
 	//init slider
 	var pageSlider = new PageSlider({
 	    pages: $(".page-wrap .page"),
-	    dev: 4,
+	    dev: false,
 	    oninit: oninit,
 	    onbeforechange: onbeforechange,
 	    onchange: onchange
