@@ -55,16 +55,57 @@
 	var PageSlider =  __webpack_require__(3);
 	var anime = __webpack_require__(4);
 	var animeObj = window.animeObj =  {};
+	var pageSlider;
 
-	//init slider
-	var pageSlider = new PageSlider({
-	    pages: $(".page-wrap .page"),
-	    dev: false,
-	    oninit: oninit,
-	    onbeforechange: onbeforechange,
-	    onchange: onchange
+	//resource init
+	var resource = {
+	    count: 0,
+	    ele: $("#resource"),
+	    image: [
+	        "city.png",
+	        "logo.png",
+	        "map.png",
+	        "music.png",
+	        "sprite.png",
+	        "wheel-base.png",
+	        "wheel-circle.png"
+	        ],
+	    music: ["iswear.mp3"]    
+	};
+	resource.image.forEach(function(item){
+	   var img = new Image();
+	   img.src = "./dist/static/" + item;
+	   resource.ele.append(img);
+	   img.onload = function(){
+	        ++ resource.count;
+	        if (resource.count >= resource.image.length){
+	            resource.ele.remove()
+	            sliderStart()
+	        }
+	   }
 	});
-
+	resource.music.forEach(function(item) {
+	   var audio = new Audio();
+	   audio.src = "./dist/static/" + item;
+	   resource.ele.append(audio);
+	   audio.onload = function(){
+	        ++ resource.count;
+	        if (resource.count >= resource.image.length){
+	            resource.ele.remove()
+	            sliderStart()
+	        }
+	   }
+	})
+	//init slider
+	function sliderStart(){
+	    pageSlider = new PageSlider({
+	        pages: $(".page-wrap .page"),
+	        dev: false,
+	        oninit: oninit,
+	        onbeforechange: onbeforechange,
+	        onchange: onchange
+	    });
+	};
 
 	//oninit callback
 	function oninit(){
