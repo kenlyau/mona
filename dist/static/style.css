@@ -563,6 +563,21 @@ button {
 .open .rsvp {
     left: 0;
 }
+.music {
+    height: 32px;
+    width: 32px;
+    background-image: url(music.png);
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 999;
+    -webkit-background-size: 32px 32px;
+    background-size: 32px 32px;
+}
+.music.playing {
+    -webkit-animation: rotate360 2s linear infinite;
+    animation: rotate360 2s  linear infinite;
+}
 .arrow{
     position: absolute;
     left: 50%;

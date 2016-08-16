@@ -233,7 +233,29 @@
 	            }
 	        })
 	    });
-
+	    var audioStatus;
+	    var audio = $("audio")[0];
+	    var musicBtn = $(".music");
+	    audio.addEventListener("playing", function(){
+	        audioStatus = "playing";
+	        musicBtn.addClass("playing");
+	    });
+	    audio.addEventListener("pause", function(){
+	        audioStatus = "paused";
+	        musicBtn.removeClass("playing");
+	    });
+	    musicBtn.on("touchstart", function() {
+	        if (audioStatus==="playing"){
+	            audio.pause();
+	        }else{
+	            audio.play();
+	        }
+	    })
+	    $("body").on("touchstart", function(){
+	        if (!audioStatus){
+	            audio.play();
+	        }
+	    })
 	        
 	})()
 
