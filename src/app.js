@@ -38,7 +38,7 @@ $("audio")[0].addEventListener("canplaythrough", function(){
         resource.ele.remove();
         sliderStart();
     }
-})
+}, false)
 //init slider
 function sliderStart(){
     pageSlider = new PageSlider({
