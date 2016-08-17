@@ -16,8 +16,7 @@ var resource = {
         "sprite.png",
         "wheel-base.png",
         "wheel-circle.png"
-        ],
-    music: ["iswear.mp3"]    
+        ]    
 };
 resource.image.forEach(function(item){
    var img = new Image();
@@ -25,23 +24,18 @@ resource.image.forEach(function(item){
    resource.ele.append(img);
    img.onload = function(){
         ++ resource.count;
-        if (resource.count >= resource.image.length){
+        if (resource.count > resource.image.length){
             resource.ele.remove()
-            sliderStart()
+            sliderStart();
         }
    }
 });
-resource.music.forEach(function(item) {
-   var audio = new Audio();
-   audio.src = "./dist/static/" + item;
-   resource.ele.append(audio);
-   audio.onload = function(){
-        ++ resource.count;
-        if (resource.count >= resource.image.length){
-            resource.ele.remove()
-            sliderStart()
-        }
-   }
+$("audio")[0].addEventListener("canplaythrough", function(){
+    ++ resource.count;
+    if (resource.count > resource.image.length) {
+        resource.ele.remove();
+        sliderStart();
+    }
 })
 //init slider
 function sliderStart(){
