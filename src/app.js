@@ -24,14 +24,16 @@ resource.image.forEach(function(item){
    resource.ele.append(img);
    img.onload = function(){
         ++ resource.count;
+        alert(resource.count);
         if (resource.count > resource.image.length){
-            resource.ele.remove()
+            resource.ele.remove();
             sliderStart();
         }
    }
 });
 $("audio")[0].addEventListener("canplaythrough", function(){
     ++ resource.count;
+    alert(resource.count)
     if (resource.count > resource.image.length) {
         resource.ele.remove();
         sliderStart();
