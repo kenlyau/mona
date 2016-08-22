@@ -234,14 +234,5 @@ function mapAnimation(){
         }
     });
 
-   var config = {
-            url: window.location.href,
-            title:'邀请您参加我们的婚礼',
-            desc:'2016年10月15日，艺家城市酒店(成都)',
-            img:'',
-            img_title:'',
-            from:'廖科和钟磬，2016年10月15日，艺家城市酒店(成都)'
-        };
-        var share_obj = new nativeShare('nativeShare',config);
         
 })()
