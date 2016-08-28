@@ -457,18 +457,26 @@ button {
     line-height: 1.5rem;
 }
 .page-kl.current .we-hand {
+    -webkit-animation: wehandMove 1s, wehandCenter .3s 1s;
+    -webkit-animation-fill-mode: forwards;
     animation: wehandMove 1s, wehandCenter .3s 1s;
     animation-fill-mode: forwards;
 }
 .page-kl.current .diamond {
+    -webkit-animation: diamondMove 1s, diamondCenter .3s 1s, diamonScale .2s 1.3s;
+    -webkit-animation-fill-mode: forwards;
     animation: diamondMove 1s, diamondCenter .3s 1s, diamonScale .2s 1.3s;
     animation-fill-mode: forwards;
 }
 .page-kl.current .wd-group {
+    -webkit-animation: wdMove 0.3s  2s ease-in-out;
+    -webkit-animation-fill-mode: forwards;
     animation: wdMove 0.3s  2s ease-in-out;
     animation-fill-mode: forwards;
 }
 .page-kl.current p {
+    -webkit-animation: klp 0.5s 2.5s ease-in-out;
+    -webkit-animation-fill-mode: forwards;
     animation: klp 0.5s 2.5s ease-in-out;
     animation-fill-mode: forwards;
 }
