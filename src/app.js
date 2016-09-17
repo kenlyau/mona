@@ -65,13 +65,12 @@ function onbeforechange(index){
             suzhouAnimation();
             break;
         case 2:
-            shanghaiAnimation();
-            break;
-        case 3:
             hongkongAnimation();
             break;
+        case 3:
+            klAnimation();    
         case 4:
-            klAnimation();                
+            photoAnimation();                
     }
 };
 
@@ -143,45 +142,70 @@ function suzhouAnimation(){
 };
 function shanghaiAnimation(){
 
-    animeObj.fire = anime({
-        targets: ".page-shanghai .fire",
-        opacity: {
-            delay: function(el, index){
-                return index * 100 + 1000;
-            },
-            value: [1,0],
-            duration: 1000,
-            easing: "easeInBounce"
-        },
-        translateX: {
-            value: function(){
-                return anime.random(10,50)
-            }
-        },
-        scale: {
-            delay: function(el, index){
-                return index * 100 + 1000;
-            },
-            value: [0,1],
-            duration: 2000
-        },
-        loop: 3
-    })
+    
 };
 function hongkongAnimation(){
    
 };
 function klAnimation(){
-    
-
-  
+    if (animeObj.fire) {
+        clearTimeout(animeObj.fireTime);
+        animeObj.fireTime = setTimeout(function(){
+           animeObj.fire.restart();
+        },2000)
+        
+        return;
+    }
+    setTimeout(function(){
+        animeObj.fire = anime({
+            targets: ".page-kl .fire",
+            opacity: {
+                delay: function(el, index){
+                    return index * 500 + 1000;
+                },
+                value: [1,0],
+                duration: 1000,
+                easing: "easeInBounce"
+            },
+            translateX: {
+                value: function(){
+                    return anime.random(10,50)
+                }
+            },
+            scale: {
+                delay: function(el, index){
+                    return index * 100 + 1000;
+                },
+                value: [0,1],
+                duration: 2000
+            },
+            loop: 3
+        })
+    },2000)
+      
 };
+function photoAnimation(){
+    if (animeObj.photo) {
+        animeObj.photo.restart();
+        return;
+    }
+    animeObj.photo = anime({
+        targets: ".photo-item",
+        translateY: {
+            delay: function(el, index) {
+                 return index*200
+            },
+            value: [-1000, 0]
+        }
+    })
+}
 function commentAnimation(){
 
 };
 function mapAnimation(){
 
 };
+
 
 //bind event
 (function(){
@@ -233,6 +257,22 @@ function mapAnimation(){
             audio.play();
         }
     });
+    $("body").on("click", ".modal", function() {
+        $(this).remove();
+    })
+    $("#photo-list").on("click", "img", function() {
+        modal($(this).attr("src"));
+    });
 
+    function modal(src) {
+        var html = ['<div class="modal">',
+                         '<div class="modal-background"></div>',
+                         '<div class="modal-content">',
+                         '<img src="'+ src +'">',
+                         '</div>',
+                    '</div>'].join("");
+        $(html).appendTo("body");            
+    };
+    
         
 })()

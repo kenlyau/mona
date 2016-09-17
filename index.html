@@ -4,7 +4,7 @@
          <meta charset="utf-8" />
          <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
          <title>廖科和钟磬，诚挚的邀请您参加我们的婚礼</title>
-         <link rel="stylesheet" type="text/css" href="./dist/static/style.css?201608281">
+         <link rel="stylesheet" type="text/css" href="./dist/static/style.css?20160903">
     </head>
     <body>
         <div class="loading">
@@ -59,27 +59,10 @@
 
                 <div class="arrow"></div>
             </div>
-            <div class="page page-shanghai">
-                <div class="city city-shanghai"></div>
-                <p>我发誓,当着天上的星星月亮<br>我必在你左右</p>
-                <div id="fire">
-                    <span class="fire fire-1"></span>
-                    <span class="fire fire-2"></span>
-                    <span class="fire fire-3"></span>
-                    <span class="fire fire-4"></span>
-                </div>
-                <div class="we">
-                    <div class="ori">
-                        <div class="balloon"></div>
-                        <div class="people"></div>
-                        <div class="line"></div>
-                    </div>
-                </div>
-                <div class="arrow"></div>
-            </div>
+            
             <div class="page page-hongkong">
                 <div class="city city-hongkong"></div>
-                <p>我愿给你一切我所能给的<br>用双手为你筑梦<br>将最美好的回忆挂在墙上</p>
+                <p>我发誓,当着天上的星星月亮<br>我必在你左右</p>
                 <div class="we">
                     <div class="ori">
                         <div class="balloon"></div>
@@ -93,7 +76,13 @@
                 <div class="arrow"></div>
             </div>
             <div class="page page-kl">
-                <p>我用我每个心跳爱你<br>无论丰腴困厄,<br>至死不渝</p>
+                <div id="fire">
+                    <span class="fire fire-1"></span>
+                    <span class="fire fire-2"></span>
+                    <span class="fire fire-3"></span>
+                    <span class="fire fire-4"></span>
+                </div>
+                <p>我用我每个心跳爱你<br>无论丰腴困厄,<br>至死不渝<br><br>2016.03.26</p>
                 <div class="wd-group">
                     <div class="we-hand"></div>
                     <div class="diamond"></div>
@@ -101,69 +90,90 @@
                 <div class="city city-kl"></div>
                 <div class="arrow"></div>
             </div>
+            <div class="page page-photo">
+                <div class="tk">
+                    <img src="./dist/static/logo.png">
+                    <p>诚挚的邀请您参加我们的婚礼，<br>期待您带着祝福，携眷出席</p>
+                </div>
+                
+                <ul class="photo-list" id="photo-list">
+                    <li class="photo-item">
+                        <img src="./dist/static/1.jpg">
+                    </li>
+                    <li class="photo-item">
+                        <img src="./dist/static/2.jpg">
+                    </li>
+                    <li class="photo-item">
+                        <img src="./dist/static/3.jpg">
+                    </li>
+                    <li class="photo-item">
+                        <img src="./dist/static/4.jpg">
+                    </li>
+                    <li class="photo-item">
+                        <img src="./dist/static/5.jpg">
+                    </li>
+                    <li class="photo-item">
+                        <img src="./dist/static/6.jpg">
+                    </li>
+                </ul>
+                <div class="arrow"></div>
+            </div>
             <div class="page page-comment">
                 <div class="rsvp">
                     <form id="rsvp-form">
-                        <div class="form-box">
-                            <table>
-                                <tr>
-                                    <th>姓名：</th>
-                                    <td><input type="text" name="name"></td>
-                                </tr>
-                                <tr>
-                                    <th>手机：</th>
-                                    <td><input type="number" name="phone"></td>
-                                </tr>
-                                <tr>
-                                    <th>出席人数：</th>
-                                    <td><input type="number" name="number"></td>
-                                </tr>
-                                <tr>
-                                    <th>祝福语：</th>
-                                    <td><textarea name="comment"></textarea></td>
-                                </tr>
-                            </table>
-                        </div>
+                        <ul class="form-box">
+                            <li>
+                                <input type="text" name="name" placeholder="您的名字">
+                            </li>
+                            <li>
+                                <input type="number" name="number" placeholder="出席人数">
+                            </li>
+                            <li>
+                                <input type="number" name="phone"  placeholder="电话号码">
+                            </li>
+                            <li>
+                                <textarea name="comment" placeholder="在这里留下想说的话"></textarea>
+                            </li>
+                        </ul>
                         <div class="btns">
-                           <button class="btn-default" id="rsvp-back">返回</button>
                            <button class="btn-success" id="rsvp-send">送出祝福</button>
                         </div>
                     </form>
-                    
+                    <div class="rsvp-bg"></div>
                 </div>
-                <div class="inner">
+                <!-- <div class="inner">
                     <div class="avatar"></div>
                     <p>诚挚的邀请您参加我们的婚礼，</p>
                     <p>期待您带着祝福，<br>于2016年10月15日携眷出席。</p>
                     <p></p>
                     <button class="btn-success" id="rsvp-open">祝福，留言</button>
-                </div>
+                </div> -->
                 
                 <div class="arrow"></div>
             </div>
-            <div class="page page-map">
-                <div class="map">
-                    <img src="./dist/static/map.png">
-                    <br>
-                    <br>
-                    <br>
-                    <a href="http://j.map.baidu.com/NpfgB"><button class="btn-success">详细地址</button></a>
-                    <p><br>艺家城市酒店<br>天仁北二街299号</p>
-                </div>
-            </div>
+            
             <div class="page page-end">
                 <div class="tk">
-                    <img src="./dist/static/logo.png">
-                    <h2>THANK YOU</h2>
+                    <h2>THANK<br>YOU</h2>
                 </div>
-                
+                <ul>
+                    <li><strong>2016年</strong><strong>10</strong>月<strong>15</strong>日</li>
+                    <li>艺家城市酒店</li>
+                    <li>成都市天仁北二街299号<br>
+                        <span>(地铁火车南站C口)</span><br><br>
+                        <a href="http://j.map.baidu.com/NpfgB" target="_blank">
+                            <button class="btn-success">详细地址</button>
+                        </a>
+                    </li>
+                </ul>
             </div>
+
         </div>
         
         <div class="music"></div>
 
         <audio src="./dist/static/iswear.mp3" loop="loop"></audio>
         <div id="resource" style="display:none;"></div>
-        <script src="./dist/bundle.js?201608281"></script>
+        <script src="./dist/bundle.js?20160903"></script>
     </body>
 </html>
